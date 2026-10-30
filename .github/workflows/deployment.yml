@@ -1,29 +1,17 @@
 name: CI Pipeline
-
-# 1. Define when this workflow runs (Triggers)
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-# 2. Define the execution blocks (Jobs)
 jobs:
   build-and-test:
-    # Specify the virtual environment runner
     runs-on: ubuntu-latest
-
-    # 3. Define the sequential tasks (Steps)
     steps:
-      # Step 1: Clone the repository onto the runner
       - name: Checkout repository code
         uses: actions/checkout@v4
-
-      # Step 2: Run a basic shell command
       - name: Run a diagnostic echo
         run: echo "Hello, GitHub Actions! The code has been checked out successfully."
-
-      # Step 3: Run a multi-line script
       - name: Verify system environment
         run: |
           echo "Current runner OS: ${{ runner.os }}"
